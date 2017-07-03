@@ -1,0 +1,66 @@
+Algoritmo "semnome"
+//
+//
+// Descrição   : Aqui você descreve o que o programa faz! (função)
+// Autor(a)    : Nome do(a) aluno(a)
+// Data atual  : 02/07/2017
+Var
+   // Seção de Declarações das variáveis
+   Pergunta, Bicho: vetor [1..10000] de caracter
+   Resposta: vetor[1..10000] de inteiro
+   aux: caracter
+   i,j,k,resp,respf:inteiro
+
+Inicio
+   Para i<- 1 ate 10000 faca
+      Bicho[i]<- "Ainda não sei em que bicho você está pensando. Vamos cadastrá-lo."                   //resposta padrão quando não se conhece o bicho
+   fimpara
+   i<-1                                                                                                   //iniciando o índice do vetor de perguntas
+   Repita
+      Repita
+         Escreval ("Digite 1 para cadastrar uma nova pergunta, ou 0 para jogar ou sair")
+         leia (resp)
+         Se resp=1, entao
+            Escreval ("Digite sua pergunta")
+            leia (Pergunta[i])
+            i<-i+1
+         Ate (i>10000 OU resp = 0)
+      Escreval ("Vamos jogar? 1-Sim, 0-Não")
+      Leia(resp)
+      Se resp=1 então
+         k<-1
+         Para j <- 1 ate (i-1) faca
+              Escreval ("Responda sinceramente sobre o seu bicho 1 - Sim, ou 0 - Não: " Pergunta[j], "?")
+               leia (Resposta[j])
+               k <- (Resposta[j]*(2^j))+k
+         fimpara
+         Escreval("Vou adivinhar")
+         Escreval(Bicho[k])
+         Se Bicho[k] = "Ainda não sei em que bicho você está pensando. Vamos cadastrá-lo." então
+            Escreval ("Digite o nome do bicho")
+            leia(Bicho[k])
+         Senão
+            Escreval ("Acertei? 1 - Sim, 0 - Não")
+            leia (resp)
+            Se resp=0, entao
+               Escreval("Vamos cadastrar uma nova pergunta?")
+               Repita
+               Escreval ("Digite 1 para cadastrar uma nova pergunta, ou 0 para voltar ao jogo")
+               leia (resp)
+               Se resp=1, entao
+                  Repita
+                        Escreval ("digite sua pergunta")
+                        leia (Pergunta[i])
+                        i<-i+1
+                  Ate i>10000 OU resp = 0
+                  Para j <- j ate (i-1) faca
+                        Escreval ("Responda sinceramente sobre o seu bicho 1 - Sim, ou 0 - Não: " Pergunta[j], "?")
+                        leia (Resposta[j])
+                        k <- (Resposta[j]*(2^j))+k
+                  Fimpara
+                  Escreval("Vou adivinhar")
+                  Escreval(Bicho[k])
+      Escreval("Você deseja recomeçar ou sair do jogo? 1-Recomeçar, 0-Sair")
+      Leia (respf)
+      Ate respf=0
+Fimalgoritmo
